@@ -7,6 +7,7 @@
 		"babel-preset-react": "^6.24.1",
 		"css-loader": "^0.28.11",
 		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"gh-pages": "^1.1.0",
 		"html-webpack-plugin": "^3.2.0",
 		"uglifyjs-webpack-plugin": "^1.2.5",
 		"webpack": "^4.6.0",
@@ -15,7 +16,8 @@
 	},
 	"scripts": {
 		"build": "webpack",
-		"dev": "webpack-dev-server --hot --inline"
+		"dev": "webpack-dev-server --hot --inline",
+		"deploy": "node ./tasks/deploy.js",
 	},
 	"dependencies": {
 		"lodash": "^4.17.10",
