@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
 const paths = { 
 	DIST: path.resolve(__dirname, 'dist'),
@@ -10,17 +11,21 @@ const paths = {
 }
 
 module.exports = {
-	entry: ['whatwg-fetch', path.join(paths.JS, 'index.js')],
+	entry: [
+		'whatwg-fetch', 
+		path.join(paths.JS, 'index.js')
+	],
 	output: {
 		path: paths.DIST,
 		filename: 'bundle.js'
 	},
 	plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.SRC, 'index.html'),
+      template: path.join(paths.DIST, 'index.html'),
     }),
     new ExtractTextPlugin('bundle.css'),
-    new UglifyJsPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
 	module: {
 		rules: [
@@ -43,6 +48,8 @@ module.exports = {
 		extensions: ['.js', '.jsx']
 	},
 	devServer: {
-		stats: "errors-only"
+		contentBase: './dist',
+		stats: 'errors-only',
+		hot: true
 	}
 }

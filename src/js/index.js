@@ -16,4 +16,4 @@ render(
 		<App />
 	</Provider>,
 	document.getElementById('toolkits-search') 
-) 
+)

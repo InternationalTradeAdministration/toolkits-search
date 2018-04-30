@@ -40,7 +40,6 @@ const buildFiltersInfo = (form_values, new_value, new_field) => {
 class Form extends React.Component {
 	constructor(props) {
 		super(props)
-		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleProviderChange = this.handleProviderChange.bind(this)
 		this.handleIssueChange = this.handleIssueChange.bind(this)
 		this.handleRegChange = this.handleRegChange.bind(this)
@@ -65,10 +64,6 @@ class Form extends React.Component {
 			if(nextProps.filters.solution.length == 1 && this.state.solution_val === '')
 				this.setState({solution_val: nextProps.filters.solution[0]})
 		}
-	}
-
-	handleSubmit(event) {
-		console.log(event)
 	}
 
 	handleProviderChange(event) {
@@ -118,38 +113,48 @@ class Form extends React.Component {
 			let solution_val = this.state.solution_val
 
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label htmlFor="provider">Provider</label>
-				<Select 
-					name="provider" 
-					options={ buildSelectOptions(this.props.filters.provider) } 
-					onChange={this.handleProviderChange}
-					value={provider_val}
-				/>
-				<label htmlFor="environmental_issue">Environmental Issue</label>
-				<Select 
-					name="environmental_issue" 
-					options={ buildSelectOptions(this.props.filters.environmental_issue) } 
-					onChange={this.handleIssueChange}
-					value={issue_val}
-				/>
-				<label htmlFor="epa_regulation">EPA Regulation</label>
-				<Select 
-					name="epa_regulation" 
-					options={ buildSelectOptions(this.props.filters.epa_regulation) } 
-					onChange={this.handleRegChange}
-					value={reg_val}
-				/>
-				<label htmlFor="solution">Solution</label>
-				<Select 
-					name="solution" 
-					options={ buildSelectOptions(this.props.filters.solution) } 
-					onChange={this.handleSolutionChange}
-					value={solution_val}
-				/>
+			<form>
+				<div className="form_row">
+					<label htmlFor="provider">Provider</label>
+					<Select 
+						name="provider" 
+						options={ buildSelectOptions(this.props.filters.provider) } 
+						onChange={this.handleProviderChange}
+						value={provider_val}
+					/>
+				</div>
 
-				<button type="submit" value="Submit">Submit</button>
-				<button type="reset" value="Clear" onClick={this.clearForm}>Clear</button>
+				<div className="form_row">
+					<label htmlFor="environmental_issue">Environmental Issue</label>
+					<Select 
+						name="environmental_issue" 
+						options={ buildSelectOptions(this.props.filters.environmental_issue) } 
+						onChange={this.handleIssueChange}
+						value={issue_val}
+					/>
+				</div>
+
+				<div className="form_row">
+					<label htmlFor="epa_regulation">EPA Regulation</label>
+					<Select 
+						name="epa_regulation" 
+						options={ buildSelectOptions(this.props.filters.epa_regulation) } 
+						onChange={this.handleRegChange}
+						value={reg_val}
+					/>
+				</div>
+
+				<div className="form_row">
+					<label htmlFor="solution">Solution</label>
+					<Select 
+						name="solution" 
+						options={ buildSelectOptions(this.props.filters.solution) } 
+						onChange={this.handleSolutionChange}
+						value={solution_val}
+					/>
+				</div>
+
+				<button type="reset" value="Clear" className="clear_button" onClick={this.clearForm}>Clear</button>
 			</form>
 		)
 	}

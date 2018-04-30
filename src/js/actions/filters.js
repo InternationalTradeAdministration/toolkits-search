@@ -3,11 +3,49 @@ import 'whatwg-fetch'
 import _ from 'lodash'
 
 const SET_FILTERS = 'SET_FILTERS'
+const SET_RESULTS = 'SET_RESULTS'
 
 const setFilters = (data) => {
 	return {
 		type: SET_FILTERS,
 		filters: data
+	}
+}
+
+const setResults = (data) => {
+	return {
+		type: SET_RESULTS,
+		results: data
+	}
+}
+
+const buildResults = (json) => {
+	const results = {}
+	_.forEach(config.environmental_solutions.filter_types, (type, index) => {
+		results[type.replace(' ', '_')] =  json[index].results
+	})
+
+	return getProviderSolutions(results)
+}
+
+const getProviderSolutions = (results) => {
+	return (dispatch) => {
+	const requests = _.map(results.provider, (prov) => {
+			return fetch(`${config.environmental_solutions.endpoint}api_key=${config.api_key}&type=solution&solution_ids=${prov.solution_id}`)
+				.then((response) => {
+					return response.json()
+				})
+		})
+	Promise.all(requests)
+		.then((json) => {
+			_.forEach(json, (result, index) => {
+				results.provider[index].solution_names = _.map(result.aggregations.names, (agg) => { return agg.key }).sort()
+			})
+			dispatch(setResults(results))
+		})
+		.catch((error) => {
+				console.log(error)
+			})
 	}
 }
 
@@ -38,6 +76,9 @@ const getFiltersQuery = (filters_info) => {
 				})
 				dispatch(getFilters(id_query))
 			})
+			.catch((error) => {
+				console.log(error)
+			})
 	}
 }
 
@@ -49,6 +90,10 @@ const getFilters = (id_query) => {
 		Promise.all(requests)
 			.then((json) => {
 				dispatch(buildFilters(json))
+				if(id_query) //Only build results when we have an actual query
+					dispatch(buildResults(json))
+				else
+					dispatch(setResults({}))
 			})
 			.catch((error) => {
 				console.log(error)
@@ -57,10 +102,10 @@ const getFilters = (id_query) => {
 }
 
 const sendRequest = (filter, id_query) => {
-  return fetch(`${config.environmental_solutions.endpoint}size=1&api_key=${config.api_key}&type=${filter}&${id_query}`)
+  return fetch(`${config.environmental_solutions.endpoint}&api_key=${config.api_key}&type=${filter}&${id_query}`)
     .then((response) => {
       return response.json()
     });
 }
 
-export { getFilters, getFiltersQuery, SET_FILTERS }
+export { getFilters, getFiltersQuery, SET_FILTERS, SET_RESULTS }

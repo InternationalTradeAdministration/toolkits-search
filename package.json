@@ -15,7 +15,7 @@
 	},
 	"scripts": {
 		"build": "webpack",
-		"dev": "webpack-dev-server"
+		"dev": "webpack-dev-server --hot --inline"
 	},
 	"dependencies": {
 		"lodash": "^4.17.10",
