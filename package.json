@@ -17,10 +17,12 @@
 	"scripts": {
 		"build": "webpack",
 		"dev": "webpack-dev-server --hot --inline",
-		"deploy": "node ./tasks/deploy.js",
+		"deploy": "node ./tasks/deploy.js"
 	},
 	"dependencies": {
+		"history": "^4.7.2",
 		"lodash": "^4.17.10",
+		"query-string": "^6.0.0",
 		"react": "^16.3.2",
 		"react-dom": "^16.3.2",
 		"react-redux": "^5.0.7",

@@ -1,6 +1,6 @@
-const ghPages = require('gh-pages');
-const path = require('path');
+var ghPages = require('gh-pages');
+var path = require('path');
 
-const root = path.join(__dirname, '..');
+var root = path.join(__dirname, '..');
 
 ghPages.publish(path.join(root, 'dist'));

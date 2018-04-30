@@ -6,14 +6,23 @@ import reducer from './reducers/reducer'
 import { Provider } from 'react-redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
+import createHistory from 'history/createHashHistory'
 
 import '../css/style.css'
 
-const store = createStore(reducer, applyMiddleware(thunk, logger))
+function renderToElement(elementId, options) {
+	const store = createStore(reducer, applyMiddleware(thunk, logger))
+	const history = createHistory()
 
-render(
-	<Provider store={store} key="provider">
-		<App />
-	</Provider>,
-	document.getElementById('toolkits-search') 
-)
+	render(
+		<Provider store={store} key="provider">
+			<App history={history} />
+		</Provider>,
+		document.getElementById(elementId) 
+	)
+}
+
+export default renderToElement;
+window.ToolkitSearch = {
+  render: renderToElement
+};

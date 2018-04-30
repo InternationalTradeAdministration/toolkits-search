@@ -78,7 +78,7 @@ const Providers = ({providers}) => {
 					<tbody>
 						<tr>
 							<td className="providers-table-cell-1">
-								<h3>{prov.name}</h3>
+								<h3><a href={prov.links[0].url} target="_blank">{prov.name}</a></h3>
 								<p>{prov.summary}</p>
 							</td>
 							<td className="providers-table-cell-2">

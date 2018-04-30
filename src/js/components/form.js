@@ -3,6 +3,7 @@ import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import _ from 'lodash'
 import { getFiltersQuery, getFilters } from '../actions/filters'
+import { stringify } from 'querystring'
 
 const field_names_to_id = {
 	provider_val: 'provider_id',
@@ -45,6 +46,7 @@ class Form extends React.Component {
 		this.handleRegChange = this.handleRegChange.bind(this)
 		this.handleSolutionChange = this.handleSolutionChange.bind(this)
 		this.clearForm = this.clearForm.bind(this)
+		this.setSingularValues = this.setSingularValues.bind(this)
 		this.state = {
 			provider_val: '',
 			issue_val: '',
@@ -53,22 +55,36 @@ class Form extends React.Component {
 		}
 	}
 
+	componentWillMount(){
+		const filters_info = buildFiltersInfo(this.props.initial_values, '', '')
+		this.setState(this.props.initial_values)
+		this.props.dispatch(getFiltersQuery(filters_info))
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if(!_.isEmpty(nextProps.filters)){
-			if(nextProps.filters.provider.length == 1 && this.state.provider_val === '')
-				this.setState({provider_val: nextProps.filters.provider[0]})
-			if(nextProps.filters.environmental_issue.length == 1 && this.state.issue_val === '')
-				this.setState({issue_val: nextProps.filters.environmental_issue[0]})
-			if(nextProps.filters.epa_regulation.length == 1 && this.state.reg_val === '')
-				this.setState({reg_val: nextProps.filters.epa_regulation[0]})
-			if(nextProps.filters.solution.length == 1 && this.state.solution_val === '')
-				this.setState({solution_val: nextProps.filters.solution[0]})
+			this.setSingularValues(nextProps.filters)
 		}
+	}
+
+	setSingularValues(filters) {
+		if(filters.provider.length == 1 && this.state.provider_val === '')
+			this.setState({provider_val: filters.provider[0]})
+		if(filters.environmental_issue.length == 1 && this.state.issue_val === '')
+			this.setState({issue_val: filters.environmental_issue[0]})
+		if(filters.epa_regulation.length == 1 && this.state.reg_val === '')
+			this.setState({reg_val: filters.epa_regulation[0]})
+		if(filters.solution.length == 1 && this.state.solution_val === '')
+			this.setState({solution_val: filters.solution[0]})
 	}
 
 	handleProviderChange(event) {
 		const value = event ? event.value : ''
 		this.setState({provider_val: value})
+		const params = this.state
+		params.provider_val = value
+		this.props.history.push(`?${stringify(params)}`)
+
 		const filters_info = buildFiltersInfo(this.state, value, 'provider_id')
 		
 		this.props.dispatch(getFiltersQuery(filters_info))
@@ -77,6 +93,10 @@ class Form extends React.Component {
 	handleIssueChange(event) {
 		const value = event ? event.value : ''
 		this.setState({issue_val: value})
+		const params = this.state
+		params.issue_val = value
+		this.props.history.push(`?${stringify(params)}`)
+
 		const filters_info = buildFiltersInfo(this.state, value, 'issue_id')
 
 		this.props.dispatch(getFiltersQuery(filters_info))
@@ -85,6 +105,10 @@ class Form extends React.Component {
 	handleRegChange(event) {
 		const value = event ? event.value : ''
 		this.setState({reg_val: value})
+		const params = this.state
+		params.reg_val = value
+		this.props.history.push(`?${stringify(params)}`)
+
 		const filters_info = buildFiltersInfo(this.state, value, 'regulation_id')
 
 		this.props.dispatch(getFiltersQuery(filters_info))
@@ -93,6 +117,10 @@ class Form extends React.Component {
 	handleSolutionChange(event) {
 		const value = event ? event.value : ''
 		this.setState({solution_val: value})
+		const params = this.state
+		params.solution_val = value
+		this.props.history.push(`?${stringify(params)}`)
+
 		const filters_info = buildFiltersInfo(this.state, value, 'solution_id')
 
 		this.props.dispatch(getFiltersQuery(filters_info))

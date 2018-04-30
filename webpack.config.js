@@ -21,7 +21,7 @@ module.exports = {
 	},
 	plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.DIST, 'index.html'),
+      template: path.join(paths.SRC, 'index.html'),
     }),
     new ExtractTextPlugin('bundle.css'),
     new webpack.NamedModulesPlugin(),
@@ -48,7 +48,6 @@ module.exports = {
 		extensions: ['.js', '.jsx']
 	},
 	devServer: {
-		contentBase: './dist',
 		stats: 'errors-only',
 		hot: true
 	}
