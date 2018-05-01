@@ -10,10 +10,10 @@ const Result = ({results}) => {
 				<table>
 					<tbody>
 						<tr>
-							<td className="providers-column">
+							<td className="results__providers-column">
 								<Providers providers={results.provider} />
 							</td>
-							<td className="issues-column">
+							<td className="results__issues-column">
 								<Issues issues={results.environmental_issue} />
 								<Regulations regulations={results.epa_regulation} />
 							</td>
@@ -39,7 +39,7 @@ const Issues = ({issues}) => {
 		)
 	})
 	return (
-		<div className="issues">
+		<div className="results__issues-column__issues">
 			<h2>Environmental Issue</h2>
 			{items}
 		</div>
@@ -59,7 +59,7 @@ const Regulations = ({regulations}) => {
 		)
 	})
 	return (
-		<div className="regulations">
+		<div className="results__issues-column__regulations">
 			<h2>EPA Regulations</h2>
 			{items}
 		</div>
@@ -77,11 +77,11 @@ const Providers = ({providers}) => {
 				<table>
 					<tbody>
 						<tr>
-							<td className="providers-table-cell-1">
+							<td className="results__providers-column__providers__left-cell">
 								<h3><a href={prov.links[0].url} target="_blank">{prov.name}</a></h3>
 								<p>{prov.summary}</p>
 							</td>
-							<td className="providers-table-cell-2">
+							<td className="results__providers-column__providers__right-cell">
 								<h4>Solutions:</h4>
 								<ul>{solution_items}</ul>
 							</td>
@@ -94,7 +94,7 @@ const Providers = ({providers}) => {
 		)
 	})
 	return (
-		<div className="providers">
+		<div className="results__providers-column__providers">
 			<h2>Providers</h2>
 			{items}
 		</div>

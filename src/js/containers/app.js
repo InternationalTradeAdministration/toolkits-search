@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-      	<div className="form_content">
+      	<div className="form">
 	      	<h1> Toolkits Search - Environmental Solutions </h1>
 	        <Form 
 	        	filters={this.props.filters} 

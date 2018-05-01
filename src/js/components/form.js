@@ -142,7 +142,7 @@ class Form extends React.Component {
 
 		return (
 			<form>
-				<div className="form_row">
+				<div className="form__row">
 					<label htmlFor="provider">Provider</label>
 					<Select 
 						name="provider" 
@@ -152,7 +152,7 @@ class Form extends React.Component {
 					/>
 				</div>
 
-				<div className="form_row">
+				<div className="form__row">
 					<label htmlFor="environmental_issue">Environmental Issue</label>
 					<Select 
 						name="environmental_issue" 
@@ -162,7 +162,7 @@ class Form extends React.Component {
 					/>
 				</div>
 
-				<div className="form_row">
+				<div className="form__row">
 					<label htmlFor="epa_regulation">EPA Regulation</label>
 					<Select 
 						name="epa_regulation" 
@@ -172,7 +172,7 @@ class Form extends React.Component {
 					/>
 				</div>
 
-				<div className="form_row">
+				<div className="form__row">
 					<label htmlFor="solution">Solution</label>
 					<Select 
 						name="solution" 
@@ -182,7 +182,7 @@ class Form extends React.Component {
 					/>
 				</div>
 
-				<button type="reset" value="Clear" className="clear_button" onClick={this.clearForm}>Clear</button>
+				<button type="reset" value="Clear" className="form__clear-button" onClick={this.clearForm}>Clear</button>
 			</form>
 		)
 	}

@@ -8,7 +8,7 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createHashHistory'
 
-import '../css/style.css'
+import '../css/style.scss'
 
 function renderToElement(elementId, options) {
 	const store = createStore(reducer, applyMiddleware(thunk, logger))
