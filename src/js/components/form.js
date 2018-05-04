@@ -1,3 +1,4 @@
+import config from '../config'
 import React, { Component } from 'react'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
@@ -5,12 +6,6 @@ import _ from 'lodash'
 import { getFiltersQuery, getFilters } from '../actions/filters'
 import { stringify } from 'querystring'
 
-const field_names_to_id = {
-	provider_val: 'provider_id',
-	issue_val: 'issue_id',
-	reg_val: 'regulation_id',
-	solution_val: 'solution_id'
-}
 
 const buildSelectOptions = (options) => {
 	return _.map(options, (option) => { return {label: option, value: option}})
@@ -28,9 +23,9 @@ const buildFiltersInfo = (form_values, new_value, new_field) => {
 	for(let key in form_values){
 		let form_val = form_values[key]  
 		// We don't want the existing state value to override the new value:
-		if(form_val != "" && field_names_to_id[key] != new_field){
+		if(form_val != "" && key+'_id' != new_field){
 			names.push(form_val)
-			id_fields.push(field_names_to_id[key])
+			id_fields.push(key+'_id')
 		}
 	}
 	const return_obj = {names: names, id_fields: id_fields}
@@ -41,18 +36,15 @@ const buildFiltersInfo = (form_values, new_value, new_field) => {
 class Form extends React.Component {
 	constructor(props) {
 		super(props)
-		this.handleProviderChange = this.handleProviderChange.bind(this)
-		this.handleIssueChange = this.handleIssueChange.bind(this)
-		this.handleRegChange = this.handleRegChange.bind(this)
-		this.handleSolutionChange = this.handleSolutionChange.bind(this)
+		this.handleSelectChange = this.handleSelectChange.bind(this)
 		this.clearForm = this.clearForm.bind(this)
 		this.setSingularValues = this.setSingularValues.bind(this)
-		this.state = {
-			provider_val: '',
-			issue_val: '',
-			reg_val: '',
-			solution_val: ''
-		}
+
+		const state = {}
+		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+			state[field.name] = ''
+		})
+		this.state = state
 	}
 
 	componentWillMount(){
@@ -68,119 +60,57 @@ class Form extends React.Component {
 	}
 
 	setSingularValues(filters) {
-		if(filters.provider.length == 1 && this.state.provider_val === '')
-			this.setState({provider_val: filters.provider[0]})
-		if(filters.environmental_issue.length == 1 && this.state.issue_val === '')
-			this.setState({issue_val: filters.environmental_issue[0]})
-		if(filters.epa_regulation.length == 1 && this.state.reg_val === '')
-			this.setState({reg_val: filters.epa_regulation[0]})
-		if(filters.solution.length == 1 && this.state.solution_val === '')
-			this.setState({solution_val: filters.solution[0]})
+		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+			if(filters[field.name].length == 1 && this.state[field.name] === ''){
+				const new_state = {}
+				new_state[field.name] = filters[field.name][0]
+				this.setState(new_state)
+			}
+		})
 	}
 
-	handleProviderChange(event) {
+	handleSelectChange(event, name) {
 		const value = event ? event.value : ''
-		this.setState({provider_val: value})
+		const state_update = {}
+		state_update[name] = value
+		this.setState(state_update)
+
 		const params = this.state
-		params.provider_val = value
+		params[name] = value
 		this.props.history.push(`?${stringify(params)}`)
 
-		const filters_info = buildFiltersInfo(this.state, value, 'provider_id')
-		
-		this.props.dispatch(getFiltersQuery(filters_info))
-	}
-
-	handleIssueChange(event) {
-		const value = event ? event.value : ''
-		this.setState({issue_val: value})
-		const params = this.state
-		params.issue_val = value
-		this.props.history.push(`?${stringify(params)}`)
-
-		const filters_info = buildFiltersInfo(this.state, value, 'issue_id')
-
-		this.props.dispatch(getFiltersQuery(filters_info))
-	}
-
-	handleRegChange(event) {
-		const value = event ? event.value : ''
-		this.setState({reg_val: value})
-		const params = this.state
-		params.reg_val = value
-		this.props.history.push(`?${stringify(params)}`)
-
-		const filters_info = buildFiltersInfo(this.state, value, 'regulation_id')
-
-		this.props.dispatch(getFiltersQuery(filters_info))
-	}
-
-	handleSolutionChange(event) {
-		const value = event ? event.value : ''
-		this.setState({solution_val: value})
-		const params = this.state
-		params.solution_val = value
-		this.props.history.push(`?${stringify(params)}`)
-
-		const filters_info = buildFiltersInfo(this.state, value, 'solution_id')
-
+		const filters_info = buildFiltersInfo(this.state, value, name+'_id')
 		this.props.dispatch(getFiltersQuery(filters_info))
 	}
 
 	clearForm() {
-		this.setState({provider_val: ''})
-		this.setState({issue_val: ''})
-		this.setState({reg_val: ''})
-		this.setState({solution_val: ''})
+		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+			const new_state = {}
+			new_state[field.name] = ''
+			this.setState(new_state)
+		})
 		this.props.dispatch(getFilters())
+		this.props.history.push('')
 	}
 
 	render() {
-			let provider_val = this.state.provider_val
-			let issue_val = this.state.issue_val
-			let reg_val = this.state.reg_val
-			let solution_val = this.state.solution_val
+		const selects = _.map(config.environmental_solutions.filter_fields, (field) => {
+			return (
+				<div className="form__row" key={field.name}>
+					<label htmlFor={field.name}>{field.label}</label>
+					<Select 
+						name={field.name}
+						options={ buildSelectOptions(this.props.filters[field.name]) } 
+						onChange={(event, name) => this.handleSelectChange(event, field.name)}
+						value={this.state[field.name]}
+					/>
+				</div>
+			)
+		})
 
 		return (
 			<form>
-				<div className="form__row">
-					<label htmlFor="provider">Provider</label>
-					<Select 
-						name="provider" 
-						options={ buildSelectOptions(this.props.filters.provider) } 
-						onChange={this.handleProviderChange}
-						value={provider_val}
-					/>
-				</div>
-
-				<div className="form__row">
-					<label htmlFor="environmental_issue">Environmental Issue</label>
-					<Select 
-						name="environmental_issue" 
-						options={ buildSelectOptions(this.props.filters.environmental_issue) } 
-						onChange={this.handleIssueChange}
-						value={issue_val}
-					/>
-				</div>
-
-				<div className="form__row">
-					<label htmlFor="epa_regulation">EPA Regulation</label>
-					<Select 
-						name="epa_regulation" 
-						options={ buildSelectOptions(this.props.filters.epa_regulation) } 
-						onChange={this.handleRegChange}
-						value={reg_val}
-					/>
-				</div>
-
-				<div className="form__row">
-					<label htmlFor="solution">Solution</label>
-					<Select 
-						name="solution" 
-						options={ buildSelectOptions(this.props.filters.solution) } 
-						onChange={this.handleSolutionChange}
-						value={solution_val}
-					/>
-				</div>
+				{selects}
 
 				<button type="reset" value="Clear" className="form__clear-button" onClick={this.clearForm}>Clear</button>
 			</form>

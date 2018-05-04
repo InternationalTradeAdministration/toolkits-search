@@ -51,9 +51,10 @@ const getProviderSolutions = (results) => {
 
 const buildFilters = (json) => {
 	const filters = {}
-	_.forEach(config.environmental_solutions.filter_types, (filter, index) =>{
+	const filter_names = _.map(config.environmental_solutions.filter_fields, (field) => { return field.name })
+	_.forEach(filter_names, (name, index) =>{
 		let filter_vals = _.map(json[index].aggregations.names, (agg) => { return agg.key }).sort()
-		filters[filter.replace(' ', '_')] = filter_vals
+		filters[name] = filter_vals
 	})
 	return setFilters(filters)
 }
