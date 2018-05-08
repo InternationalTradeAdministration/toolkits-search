@@ -10,13 +10,13 @@ import createHistory from 'history/createHashHistory'
 
 import '../css/style.scss'
 
-function renderToElement(elementId, options) {
+function renderToElement(elementId, toolkit_name) {
 	const store = createStore(reducer, applyMiddleware(thunk, logger))
 	const history = createHistory()
 
 	render(
 		<Provider store={store} key="provider">
-			<App history={history} />
+			<App history={history} toolkit_name={toolkit_name} />
 		</Provider>,
 		document.getElementById(elementId) 
 	)

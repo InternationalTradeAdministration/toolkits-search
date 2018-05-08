@@ -1,11 +1,9 @@
-import config from '../config'
 import React, { Component } from 'react'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import _ from 'lodash'
 import { getFiltersQuery, getFilters } from '../actions/filters'
 import { stringify } from 'querystring'
-
 
 const buildSelectOptions = (options) => {
 	return _.map(options, (option) => { return {label: option, value: option}})
@@ -41,7 +39,7 @@ class Form extends React.Component {
 		this.setSingularValues = this.setSingularValues.bind(this)
 
 		const state = {}
-		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+		_.forEach(this.props.config.filter_fields, (field) => {
 			state[field.name] = ''
 		})
 		this.state = state
@@ -50,7 +48,7 @@ class Form extends React.Component {
 	componentWillMount(){
 		const filters_info = buildFiltersInfo(this.props.initial_values, '', '')
 		this.setState(this.props.initial_values)
-		this.props.dispatch(getFiltersQuery(filters_info))
+		this.props.dispatch(getFiltersQuery(filters_info, this.props.toolkit_name))
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -60,7 +58,7 @@ class Form extends React.Component {
 	}
 
 	setSingularValues(filters) {
-		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+		_.forEach(this.props.config.filter_fields, (field) => {
 			if(filters[field.name].length == 1 && this.state[field.name] === ''){
 				const new_state = {}
 				new_state[field.name] = filters[field.name][0]
@@ -80,21 +78,21 @@ class Form extends React.Component {
 		this.props.history.push(`?${stringify(params)}`)
 
 		const filters_info = buildFiltersInfo(this.state, value, name+'_id')
-		this.props.dispatch(getFiltersQuery(filters_info))
+		this.props.dispatch(getFiltersQuery(filters_info, this.props.toolkit_name))
 	}
 
 	clearForm() {
-		_.forEach(config.environmental_solutions.filter_fields, (field) => {
+		_.forEach(this.props.config.filter_fields, (field) => {
 			const new_state = {}
 			new_state[field.name] = ''
 			this.setState(new_state)
 		})
-		this.props.dispatch(getFilters())
+		this.props.dispatch(getFilters(this.props.toolkit_name))
 		this.props.history.push('')
 	}
 
 	render() {
-		const selects = _.map(config.environmental_solutions.filter_fields, (field) => {
+		const selects = _.map(this.props.config.filter_fields, (field) => {
 			return (
 				<div className="form__row" key={field.name}>
 					<label htmlFor={field.name}>{field.label}</label>

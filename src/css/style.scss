@@ -72,26 +72,18 @@ body {
 		}	
 	}
 
-	&__issues-column {
+	&__additional-column {
 		vertical-align: top;
 		width: 40%;
 		padding-left: 10px;
 
-		&__issues {
+		&__panel {
 			max-height: 400px;
 			overflow-y: scroll;
 			margin-bottom: 50px;
 			border: 1px solid gray;
 			border-radius: 5px;
 			padding: 10px;
-		}
-
-		&__regulations {
-			max-height: 400px;
-			overflow-y: scroll;
-			border: 1px solid gray;
-			padding: 10px;
-			border-radius: 5px;
 		}
 	}
 }

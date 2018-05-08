@@ -5,25 +5,28 @@ import { getFilters } from '../actions/filters'
 import Form from '../components/form'
 import Result from '../components/result'
 import { parse } from 'query-string'
+import config from '../config'
 
 class App extends Component {
 	componentWillMount() {
-		this.props.dispatch(getFilters())
+		this.props.dispatch(getFilters(this.props.toolkit_name))
 	}
 
   render() {
     return (
       <div>
       	<div className="form">
-	      	<h1> Toolkits Search - Environmental Solutions </h1>
+	      	<h1> Toolkits Search </h1>
 	        <Form 
 	        	filters={this.props.filters} 
 	        	dispatch={this.props.dispatch}
 	        	history={this.props.history} 
 	        	initial_values={this.props.query}
+	        	config={config[this.props.toolkit_name]}
+	        	toolkit_name={this.props.toolkit_name}
 	        />
         </div>
-        <Result results={this.props.results} />
+        <Result results={this.props.results} toolkit_name={this.props.toolkit_name} />
       </div>
     )
   }
