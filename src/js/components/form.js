@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
-import 'react-select/dist/react-select.css'
+
 import _ from 'lodash'
 import { getFiltersQuery, getFilters } from '../actions/filters'
 import { stringify } from 'querystring'
