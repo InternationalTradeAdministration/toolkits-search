@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var exec = require('gulp-exec');
 
-const sites = ['environmental_solutions', 'oil_and_gas'];
+const sites = ['environmental_solutions', 'oil_and_gas', 'renewable_energy', 'next_gen', 'smart_grid', 'civil_nuclear'];
 
 sites.forEach((site) => {
 

@@ -22,7 +22,7 @@ const setResults = (data) => {
 const buildResults = (json, toolkit_name) => {
 	const results = {}
 	_.forEach(config[toolkit_name].filter_types, (type, index) => {
-		results[type.replace(' ', '_')] =  json[index].results
+		results[type.replace(/ /g, '_')] =  json[index].results
 	})
 
 	return getProviderSolutions(results, toolkit_name)
