@@ -1,7 +1,6 @@
 @import 'react-select.css';
 
 body {
-  background: #f9fafb;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0;
@@ -13,21 +12,24 @@ body {
   margin-right: auto;
 	width: 50%;
 	margin-bottom: 50px;
-
+	form {
+		padding-left: 50px;
+	}
+	
 	&__row {
 		display: block;
 	}
 
 	&__clear-button {
 		display: block;
-		margin-left: 155px;
+		margin-left: 205px;
 	  text-align: center;
 	  margin-top: 20px;
 	  width: 60px;
 	}
 
 	.Select {
-		width: 50%;
+		width: 40%;
 		padding: 5px;
 		display: inline-block;
 		vertical-align: bottom;
@@ -36,12 +38,11 @@ body {
 
 	label {
 		display: inline-block;
-		width: 150px;
+		width: 200px;
 		text-align: center;
 	  position: relative;
 	}
 }
-
 
 .results { 
 	max-width: 1080px;
@@ -54,11 +55,7 @@ body {
 		padding-right: 10px;
 
 		&__providers {
-			max-height: 850px;
 			padding: 10px;
-			border: 1px solid gray;
-			border-radius: 5px;
-			overflow-y: scroll;
 
 			&__left-cell {
 				vertical-align: top;
@@ -80,12 +77,19 @@ body {
 		padding-left: 10px;
 
 		&__panel {
-			max-height: 400px;
-			overflow-y: scroll;
 			margin-bottom: 50px;
-			border: 1px solid gray;
-			border-radius: 5px;
 			padding: 10px;
 		}
 	}
+}
+
+.disclaimer {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #f3f3f3;
+	width: 50%;
+	margin-left: auto;
+  margin-right: auto;
 }

@@ -8,7 +8,7 @@ const FilterPanel = ({results, heading}) => {
 		})
 		return (
 			<div>
-				<h4>{item.name}</h4>
+				<h3>{item.name}</h3>
 				<p>{item.summary}</p>
 				{links}
 			</div>

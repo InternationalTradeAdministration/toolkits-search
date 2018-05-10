@@ -16,7 +16,8 @@ class App extends Component {
     return (
       <div>
       	<div className="form">
-	      	<h1> Toolkits Search </h1>
+	      	<h1>{config[this.props.toolkit_name].heading}</h1>
+	      	<p>{config[this.props.toolkit_name].description}</p>
 	        <Form 
 	        	filters={this.props.filters} 
 	        	dispatch={this.props.dispatch}
@@ -27,6 +28,10 @@ class App extends Component {
 	        />
         </div>
         <Result results={this.props.results} toolkit_name={this.props.toolkit_name} />
+        <div className="disclaimer">
+        	<h4>Disclaimer</h4>
+        	<p>{config[this.props.toolkit_name].disclaimer}</p>
+        </div>
       </div>
     )
   }

@@ -6,7 +6,7 @@ const Providers = ({providers}) => {
 		const solution_items = _.map(prov.solution_names, (name) => {
 			return <li>{name}</li>
 		})
-		
+
 		return (
 			<div>
 				<table>
@@ -31,6 +31,7 @@ const Providers = ({providers}) => {
 	return (
 		<div className="results__providers-column__providers">
 			<h2>Providers</h2>
+			<h4>Total: {providers.length}</h4>
 			{items}
 		</div>
 	)
