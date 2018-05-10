@@ -5,7 +5,7 @@ const sites = ['environmental_solutions', 'oil_and_gas', 'renewable_energy', 'ne
 
 sites.forEach((site) => {
   gulp.task(`start:${site}`, () => {
-    .exec(`node_modules/.bin/webpack-dev-server --config ./sites/${site}/webpack.dev.js`, (err, stdout, stderr) => {
+    exec(`node_modules/.bin/webpack-dev-server --config ./sites/${site}/webpack.dev.js`, (err, stdout, stderr) => {
       console.log(stdout);
       console.log(stderr);
     });
