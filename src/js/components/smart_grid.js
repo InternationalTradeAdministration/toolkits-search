@@ -10,7 +10,7 @@ const SmartGrid = ({results}) => {
             <tbody>
                 <tr>
                     <td className="results__providers-column">
-                        <Providers providers={results.provider} />
+                        <Providers providers={results.provider} low_level="Solution" />
                     </td>
                     <td className="results__additional-column">
                         <FilterPanel results={results["sub-sector"]} heading="Sub-Sector" />

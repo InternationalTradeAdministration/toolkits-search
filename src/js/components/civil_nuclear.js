@@ -10,7 +10,7 @@ const CivilNuclear = ({results}) => {
             <tbody>
                 <tr>
                     <td className="results__providers-column">
-                        <Providers providers={results.provider} />
+                        <Providers providers={results.provider} low_level="Solution" />
                     </td>
                 </tr>
             </tbody>

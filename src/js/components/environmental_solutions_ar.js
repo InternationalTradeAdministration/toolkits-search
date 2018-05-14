@@ -4,16 +4,17 @@ import _ from "lodash";
 import FilterPanel from "./filter_panel";
 import Providers from "./providers";
 
-const NextGen = ({results}) => {
+const EnvironmentalSolutionsAr = ({results}) => {
     return(
         <table>
             <tbody>
                 <tr>
                     <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="Solution" />
+                        <Providers providers={results.provider} low_level="حل"/>
                     </td>
                     <td className="results__additional-column">
-                        <FilterPanel results={results['performance improvement area']} heading="Performance Improvement Area" />
+                        <FilterPanel results={results['قضية بيئية']} heading="قضية بيئية" />
+                        <FilterPanel results={results['لائحة وكالة حماية البيئة']} heading="لائحة وكالة حماية البيئة" />
                     </td>
                 </tr>
             </tbody>
@@ -21,4 +22,4 @@ const NextGen = ({results}) => {
     );
 };
 
-export default NextGen;
+export default EnvironmentalSolutionsAr;

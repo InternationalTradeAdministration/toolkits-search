@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
 
-const Providers = ({providers}) => {
+const Providers = ({providers, low_level}) => {
     const items = _.map(providers, (prov) => {
         const solution_items = _.map(prov.solution_names, (name) => {
             return <li>{name}</li>;
@@ -17,7 +17,7 @@ const Providers = ({providers}) => {
                                 <p>{prov.summary}</p>
                             </td>
                             <td className="results__providers-column__providers__right-cell">
-                                <h4>Solutions:</h4>
+                                <h4>{low_level}</h4>
                                 <ul>{solution_items}</ul>
                             </td>
                         </tr>

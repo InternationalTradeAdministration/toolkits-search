@@ -3,6 +3,7 @@ const config = {
     environmental_solutions: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions/search.json?",
         filter_types: ["provider", "environmental issue", "epa regulation", "solution"],
+        languages_enabled: true,
         filter_fields: [
             {
                 label: "Provider",
@@ -22,6 +23,34 @@ const config = {
             },
         ],
         low_level_type: "solution",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
+    environmental_solutions_ar: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_ar/search.json?",
+        filter_types: ["provider", "قضية بيئية", "لائحة وكالة حماية البيئة", "حل"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "قضية بيئية",
+                name: "issue"
+            },
+            {
+                label: "لائحة وكالة حماية البيئة",
+                name: "regulation"
+            },
+            {
+                label: "حل",
+                name: "solution"
+            },
+        ],
+        low_level_type: "حل",
         low_level_id_field: "solution_id",
         heading: "U.S. Environmental Solutions Toolkit Search",
         description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",

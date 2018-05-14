@@ -18,7 +18,7 @@ const buildFiltersInfo = (form_values, new_value, new_field) => {
         id_fields.push(new_field);
     }
 
-    for(let key in form_values){
+    for(let key in _.omit(form_values, 'language')){
         let form_val = form_values[key];  
         // We don't want the existing state value to override the new value:
         if(form_val != "" && key+"_id" != new_field){
@@ -55,6 +55,11 @@ class Form extends React.Component {
         if(!_.isEmpty(nextProps.filters)){
             this.setSingularValues(nextProps.filters);
         }
+        // Reset form if the language is changed:
+        if(this.state.language != nextProps.initial_values.language){
+            const state = nextProps.initial_values;
+            this.clearForm(state);
+        }
     }
 
     setSingularValues(filters) {
@@ -78,17 +83,17 @@ class Form extends React.Component {
         this.props.history.push(`?${stringify(params)}`);
 
         const filters_info = buildFiltersInfo(this.state, value, name+"_id");
+
         this.props.dispatch(getFiltersQuery(filters_info, this.props.toolkit_name));
     }
 
-    clearForm() {
+    clearForm(state = {}) {
+        const new_state = state;
         _.forEach(this.props.config.filter_fields, (field) => {
-            const new_state = {};
             new_state[field.name] = "";
-            this.setState(new_state);
         });
+        this.setState(new_state);
         this.props.dispatch(getFilters(this.props.toolkit_name));
-        this.props.history.push("");
     }
 
     render() {
