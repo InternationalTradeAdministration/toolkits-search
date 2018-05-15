@@ -56,6 +56,146 @@ const config = {
         description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
         disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
     },
+    environmental_solutions_zh: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_zh/search.json?",
+        filter_types: ["provider", "环境问题", "环保署管制", "解决方案"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "环境问题",
+                name: "issue"
+            },
+            {
+                label: "环保署管制",
+                name: "regulation"
+            },
+            {
+                label: "解决方案",
+                name: "solution"
+            },
+        ],
+        low_level_type: "解决方案",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
+    environmental_solutions_fr: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_fr/search.json?",
+        filter_types: ["provider", "Problème environnemental", "Régulation de l'EPA", "Solution"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "Problème environnemental",
+                name: "issue"
+            },
+            {
+                label: "Régulation de l'EPA",
+                name: "regulation"
+            },
+            {
+                label: "Solution",
+                name: "solution"
+            },
+        ],
+        low_level_type: "Solution",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
+    environmental_solutions_pt: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_pt/search.json?",
+        filter_types: ["provider", "Questão Ambiental", "EPA Regulamento", "Solução"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "Questão Ambiental",
+                name: "issue"
+            },
+            {
+                label: "EPA Regulamento",
+                name: "regulation"
+            },
+            {
+                label: "Solução",
+                name: "solution"
+            },
+        ],
+        low_level_type: "Solução",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
+    environmental_solutions_ru: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_ru/search.json?",
+        filter_types: ["provider", "Environmental Issue", "EPA Regulation", "Solution"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "Environmental Issue",
+                name: "issue"
+            },
+            {
+                label: "EPA Regulation",
+                name: "regulation"
+            },
+            {
+                label: "Solution",
+                name: "solution"
+            },
+        ],
+        low_level_type: "Solution",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
+    environmental_solutions_es: {
+        endpoint: "https://api.trade.gov/v1/environmental_solutions_es/search.json?",
+        filter_types: ["provider", "Cuestión Ambiental", "Reglamento de la EPA", "Solución"],
+        languages_enabled: true,
+        filter_fields: [
+            {
+                label: "Provider",
+                name: "provider"
+            },
+            {
+                label: "Cuestión Ambiental",
+                name: "issue"
+            },
+            {
+                label: "Reglamento de la EPA",
+                name: "regulation"
+            },
+            {
+                label: "Solución",
+                name: "solution"
+            },
+        ],
+        low_level_type: "Solución",
+        low_level_id_field: "solution_id",
+        heading: "U.S. Environmental Solutions Toolkit Search",
+        description: "The U.S. Environmental Solutions Toolkit is a buyer's resource guide that marries EPA expertise on solving environmental challenges with a catalogue of U.S. providers of related technologies. The U.S. Environmental Solutions Toolkit fosters export opportunities for the U.S. environmental industry as well as fosters and advances environmental protection goals. U.S. environmental technology or services companies that would like to be listed as solution providers should submit an application.",
+        disclaimer: "The information on the toolkit website is intended to assist foreign buyers seeking to identify U.S. technology and service providers in the U.S. Environmental Solutions industry. The list is not exhaustive of all U.S. exporters of goods, services or technology in this sector. Listing does not constitute endorsement by ITA of a business or its products, services or technology. ITA has performed limited due diligence but recommends strongly that both parties perform their own due diligence, investigation, and background research before entering into a commercial relationship on the basis of the information found on this website.  ITA assumes no responsibility or liability for the actions users may take based on the information provided on this website. ITA reserves the right not to list any particular business and to remove companies or modules from the Toolkit as ITA deems necessary or appropriate."
+    },
     oil_and_gas: {
         endpoint: "https://api.trade.gov/v1/oil_and_gas/search.json?",
         filter_types: ["provider", "equipment/service category", "project phase", "equipment/service"],

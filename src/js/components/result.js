@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import Providers from "./providers";
-import EnvironmentalSolutions from "./environmental_solutions";
-import EnvironmentalSolutionsAr from "./environmental_solutions_ar";
+import EnvironmentalSolutions from "./es/environmental_solutions";
+import EnvironmentalSolutionsAr from "./es/es_ar";
+import EnvironmentalSolutionsEs from "./es/es_es";
+import EnvironmentalSolutionsFr from "./es/es_fr";
+import EnvironmentalSolutionsPt from "./es/es_pt";
+import EnvironmentalSolutionsRu from "./es/es_ru";
+import EnvironmentalSolutionsZh from "./es/es_zh";
 import OilAndGas from "./oil_and_gas";
 import RenewableEnergy from "./renewable_energy";
 import NextGen from "./next_gen";
@@ -20,6 +25,21 @@ const Result = ({results, toolkit_name}) => {
         break;
     case "environmental_solutions_ar":
         results_panel = <EnvironmentalSolutionsAr results={results} />;
+        break;
+    case "environmental_solutions_es":
+        results_panel = <EnvironmentalSolutionsEs results={results} />;
+        break;
+    case "environmental_solutions_fr":
+        results_panel = <EnvironmentalSolutionsFr results={results} />;
+        break;
+    case "environmental_solutions_pt":
+        results_panel = <EnvironmentalSolutionsPt results={results} />;
+        break;
+    case "environmental_solutions_ru":
+        results_panel = <EnvironmentalSolutionsRu results={results} />;
+        break;
+    case "environmental_solutions_zh":
+        results_panel = <EnvironmentalSolutionsZh results={results} />;
         break;
     case "oil_and_gas":
         results_panel = <OilAndGas results={results} />;

@@ -17,7 +17,7 @@ const language_options = [
     {label: 'Portuguese', value: 'pt'},
     {label: 'Russian', value: 'ru'},
     {label: 'Spanish', value: 'es'},
-]
+];
 
 class App extends Component {
     constructor(props){
@@ -30,7 +30,9 @@ class App extends Component {
     }
 
     componentWillMount() {
-        const language_val = this.props.query.language ? this.props.query.language : 'en';
+        let query = parse(this.props.history.location.search);
+        const language_val = query.language ? query.language : 'en';
+        // Update toolkit name based on the language:
         const toolkit_name = (this.props.toolkit_name+'_'+language_val).replace('_en', '');
         this.setState({language_val: language_val, toolkit_name: toolkit_name });
         this.props.dispatch(getFilters(this.props.toolkit_name));
@@ -39,7 +41,7 @@ class App extends Component {
     handleSelectChange(event) {
         const value = event ? event.value : "";
         const toolkit_name = (this.props.toolkit_name+'_'+value).replace('_en', '');
-        
+
         this.props.history.push(`?${stringify({language: value})}`);
         this.setState({language_val: value, toolkit_name: toolkit_name});
     }
@@ -85,12 +87,9 @@ class App extends Component {
 }
 
 function mapStateToProps(state, ownProps){
-    let query = parse(ownProps.history.location.search);
-
     return {
         filters: state.filters,
         results: state.results,
-        query
     };
 }
 

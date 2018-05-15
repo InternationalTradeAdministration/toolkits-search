@@ -4,11 +4,11 @@ import _ from "lodash";
 const Providers = ({providers, low_level}) => {
     const items = _.map(providers, (prov) => {
         const solution_items = _.map(prov.solution_names, (name) => {
-            return <li>{name}</li>;
+            return <li key={name}>{name}</li>;
         });
 
         return (
-            <div>
+            <div key={prov.name}>
                 <table>
                     <tbody>
                         <tr>

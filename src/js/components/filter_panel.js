@@ -4,10 +4,10 @@ import _ from "lodash";
 const FilterPanel = ({results, heading}) => {
     const items = _.map(results, (item) => {
         const links = _.map(item.links, (link) => {
-            return <p><a href={link.url} target="_blank">{link.display_name}</a></p>;
+            return <p key={link.url}><a href={link.url} target="_blank">{link.display_name}</a></p>;
         });
         return (
-            <div>
+            <div key={item.name}>
                 <h3>{item.name}</h3>
                 <p>{item.summary}</p>
                 {links}
