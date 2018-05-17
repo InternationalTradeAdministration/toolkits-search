@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
 
-const Providers = ({providers, low_level}) => {
+const Providers = ({providers, low_level, heading}) => {
     const items = _.map(providers, (prov) => {
         const solution_items = _.map(prov.solution_names, (name) => {
             return <li key={name}>{name}</li>;
@@ -30,7 +30,7 @@ const Providers = ({providers, low_level}) => {
     });
     return (
         <div className="results__providers-column__providers">
-            <h2>Providers</h2>
+            <h2>{heading}</h2>
             <h4>Total: {providers.length}</h4>
             {items}
         </div>

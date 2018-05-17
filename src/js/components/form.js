@@ -47,7 +47,11 @@ class Form extends React.Component {
 
     componentWillMount(){
         const filters_info = buildFiltersInfo(this.props.initial_values, "", "");
-        this.setState(this.props.initial_values);
+        const new_state = this.props.initial_values;
+        new_state.language = this.props.initial_values.language ? this.props.initial_values.language : 'en';
+
+        this.setState(new_state);
+   
         this.props.dispatch(getFiltersQuery(filters_info, this.props.toolkit_name));
     }
 
@@ -56,9 +60,9 @@ class Form extends React.Component {
             this.setSingularValues(nextProps.filters);
         }
         // Reset form if the language is changed:
-        if(this.state.language != nextProps.initial_values.language){
-            const state = nextProps.initial_values;
-            this.clearForm(state);
+        if(nextProps.initial_values.language && this.state.language != nextProps.initial_values.language){
+            this.setState({language: nextProps.initial_values.language});
+            this.clearForm();
         }
     }
 
@@ -76,7 +80,6 @@ class Form extends React.Component {
         const value = event ? event.value : "";
         const state_update = {};
         state_update[name] = value;
-        this.setState(state_update);
 
         const params = this.state;
         params[name] = value;
@@ -84,14 +87,16 @@ class Form extends React.Component {
 
         const filters_info = buildFiltersInfo(this.state, value, name+"_id");
 
+        this.setState(state_update);
         this.props.dispatch(getFiltersQuery(filters_info, this.props.toolkit_name));
     }
 
-    clearForm(state = {}) {
-        const new_state = state;
+    clearForm() {
+        const new_state = {};
         _.forEach(this.props.config.filter_fields, (field) => {
             new_state[field.name] = "";
         });
+
         this.setState(new_state);
         this.props.dispatch(getFilters(this.props.toolkit_name));
     }

@@ -31,10 +31,12 @@ class App extends Component {
 
     componentWillMount() {
         let query = parse(this.props.history.location.search);
-        const language_val = query.language ? query.language : 'en';
         // Update toolkit name based on the language:
-        const toolkit_name = (this.props.toolkit_name+'_'+language_val).replace('_en', '');
-        this.setState({language_val: language_val, toolkit_name: toolkit_name });
+        if(config[this.props.toolkit_name].languages_enabled){
+            const language_val = query.language ? query.language : 'en';
+            const toolkit_name = (this.props.toolkit_name+'_'+language_val).replace('_en', '');
+            this.setState({language_val: language_val, toolkit_name: toolkit_name });
+        }
         this.props.dispatch(getFilters(this.props.toolkit_name));
     }
 

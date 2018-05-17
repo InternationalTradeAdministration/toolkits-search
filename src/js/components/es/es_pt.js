@@ -10,7 +10,7 @@ const EnvironmentalSolutionsPt = ({results}) => {
             <tbody>
                 <tr>
                     <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="Solução"/>
+                        <Providers providers={results.provider} low_level="Solução" heading="Provedora de Soluções EUA"/>
                     </td>
                     <td className="results__additional-column">
                         <FilterPanel results={results['Questão Ambiental']} heading="Questão Ambiental" />

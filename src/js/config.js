@@ -2,13 +2,9 @@ const config = {
     api_key: "O6fmOIPtrvDlqoDe2_6UbKJc",
     environmental_solutions: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions/search.json?",
-        filter_types: ["provider", "environmental issue", "epa regulation", "solution"],
+        filter_types: ["environmental issue", "epa regulation", "solution", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Environmental Issue",
                 name: "issue"
@@ -21,6 +17,10 @@ const config = {
                 label: "Solution",
                 name: "solution"
             },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "solution",
         low_level_id_field: "solution_id",
@@ -30,13 +30,9 @@ const config = {
     },
     environmental_solutions_ar: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_ar/search.json?",
-        filter_types: ["provider", "قضية بيئية", "لائحة وكالة حماية البيئة", "حل"],
+        filter_types: ["قضية بيئية", "لائحة وكالة حماية البيئة", "حل", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "قضية بيئية",
                 name: "issue"
@@ -49,6 +45,10 @@ const config = {
                 label: "حل",
                 name: "solution"
             },
+            {
+                label: "موفر الحلول الأمريكي",
+                name: "provider"
+            },
         ],
         low_level_type: "حل",
         low_level_id_field: "solution_id",
@@ -58,13 +58,9 @@ const config = {
     },
     environmental_solutions_zh: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_zh/search.json?",
-        filter_types: ["provider", "环境问题", "环保署管制", "解决方案"],
+        filter_types: ["环境问题", "环保署管制", "解决方案", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "环境问题",
                 name: "issue"
@@ -77,6 +73,10 @@ const config = {
                 label: "解决方案",
                 name: "solution"
             },
+            {
+                label: "美国解决方案供应商",
+                name: "provider"
+            },
         ],
         low_level_type: "解决方案",
         low_level_id_field: "solution_id",
@@ -86,13 +86,9 @@ const config = {
     },
     environmental_solutions_fr: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_fr/search.json?",
-        filter_types: ["provider", "Problème environnemental", "Régulation de l'EPA", "Solution"],
+        filter_types: ["Problème environnemental", "Régulation de l'EPA", "Solution", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Problème environnemental",
                 name: "issue"
@@ -105,6 +101,10 @@ const config = {
                 label: "Solution",
                 name: "solution"
             },
+            {
+                label: "Fournisseur de solution améric",
+                name: "provider"
+            },
         ],
         low_level_type: "Solution",
         low_level_id_field: "solution_id",
@@ -114,13 +114,9 @@ const config = {
     },
     environmental_solutions_pt: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_pt/search.json?",
-        filter_types: ["provider", "Questão Ambiental", "EPA Regulamento", "Solução"],
+        filter_types: ["Questão Ambiental", "EPA Regulamento", "Solução", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Questão Ambiental",
                 name: "issue"
@@ -133,6 +129,10 @@ const config = {
                 label: "Solução",
                 name: "solution"
             },
+            {
+                label: "Provedora de Soluções EUA",
+                name: "provider"
+            },
         ],
         low_level_type: "Solução",
         low_level_id_field: "solution_id",
@@ -142,13 +142,9 @@ const config = {
     },
     environmental_solutions_ru: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_ru/search.json?",
-        filter_types: ["provider", "Environmental Issue", "EPA Regulation", "Solution"],
+        filter_types: ["Environmental Issue", "EPA Regulation", "Solution", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Environmental Issue",
                 name: "issue"
@@ -161,6 +157,10 @@ const config = {
                 label: "Solution",
                 name: "solution"
             },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "Solution",
         low_level_id_field: "solution_id",
@@ -170,13 +170,9 @@ const config = {
     },
     environmental_solutions_es: {
         endpoint: "https://api.trade.gov/v1/environmental_solutions_es/search.json?",
-        filter_types: ["provider", "Cuestión Ambiental", "Reglamento de la EPA", "Solución"],
+        filter_types: ["Cuestión Ambiental", "Reglamento de la EPA", "Solución", "provider"],
         languages_enabled: true,
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Cuestión Ambiental",
                 name: "issue"
@@ -189,6 +185,10 @@ const config = {
                 label: "Solución",
                 name: "solution"
             },
+            {
+                label: "Proveedor de Soluciones de EE.",
+                name: "provider"
+            },
         ],
         low_level_type: "Solución",
         low_level_id_field: "solution_id",
@@ -198,23 +198,23 @@ const config = {
     },
     oil_and_gas: {
         endpoint: "https://api.trade.gov/v1/oil_and_gas/search.json?",
-        filter_types: ["provider", "equipment/service category", "project phase", "equipment/service"],
+        filter_types: ["equipment/service category", "project phase", "equipment/service", "provider",],
         filter_fields: [
             {
-                label: "Provider",
-                name: "provider"
+                label: "Project Phase",
+                name: "phase"
             },
             {
                 label: "Equipment/Service Category",
                 name: "category"
             },
             {
-                label: "Project Phase",
-                name: "phase"
-            },
-            {
                 label: "Equipment/Service",
                 name: "equipment"
+            },
+            {
+                label: "Provider",
+                name: "provider"
             },
         ],
         low_level_type: "equipment/service",
@@ -225,12 +225,8 @@ const config = {
     },
     renewable_energy: {
         endpoint: "https://api.trade.gov/v1/renewable_energy/search.json?",
-        filter_types: ["provider", "sector", "project type", "offering", "equipment/service type", "specific equipment/service"],
+        filter_types: ["sector", "project type", "offering", "equipment/service type", "specific equipment/service", "provider"],
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Sector",
                 name: "sector"
@@ -250,7 +246,11 @@ const config = {
             {
                 label: "Specific Equipmet/Service",
                 name: "equipment"
-            }
+            },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "specific equipment/service",
         low_level_id_field: "equipment_id",
@@ -260,12 +260,8 @@ const config = {
     },
     next_gen: {
         endpoint: "https://api.trade.gov/v1/next_gen/search.json?",
-        filter_types: ["provider", "performance improvement area", "capability", "solution"],
+        filter_types: ["performance improvement area", "capability", "solution", "provider"],
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Performance Improvement Area",
                 name: "improvement_area"
@@ -277,7 +273,11 @@ const config = {
             {
                 label: "Solution",
                 name: "solution"
-            }
+            },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "solution",
         low_level_id_field: "solution_id",
@@ -287,12 +287,8 @@ const config = {
     },
     smart_grid: {
         endpoint: "https://api.trade.gov/v1/smart_grid/search.json?",
-        filter_types: ["provider", "sub-sector", "category", "product type"],
+        filter_types: ["sub-sector", "category", "product type", "provider",],
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Sub-Sector",
                 name: "sub_sector"
@@ -304,7 +300,11 @@ const config = {
             {
                 label: "Product Type",
                 name: "product_type"
-            }
+            },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "product type",
         low_level_id_field: "product_type_id",
@@ -314,12 +314,8 @@ const config = {
     },
     civil_nuclear: {
         endpoint: "https://api.trade.gov/v1/civil_nuclear/search.json?",
-        filter_types: ["provider", "sector", "sub-sector", "product"],
+        filter_types: ["sector", "sub-sector", "product", "provider"],
         filter_fields: [
-            {
-                label: "Provider",
-                name: "provider"
-            },
             {
                 label: "Sector",
                 name: "sector"
@@ -331,7 +327,11 @@ const config = {
             {
                 label: "Product",
                 name: "product"
-            }
+            },
+            {
+                label: "Provider",
+                name: "provider"
+            },
         ],
         low_level_type: "product",
         low_level_id_field: "product_id",
