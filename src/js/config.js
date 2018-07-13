@@ -198,7 +198,7 @@ const config = {
     },
     oil_and_gas: {
         endpoint: "https://api.trade.gov/v1/oil_and_gas/search.json?",
-        filter_types: ["equipment/service category", "project phase", "equipment/service", "provider",],
+        filter_types: ["project phase", "equipment/service category", "equipment/service", "provider",],
         filter_fields: [
             {
                 label: "Project Phase",
@@ -244,7 +244,7 @@ const config = {
                 name: "equipment_type"
             },
             {
-                label: "Specific Equipmet/Service",
+                label: "Specific Equipment/Service",
                 name: "equipment"
             },
             {
