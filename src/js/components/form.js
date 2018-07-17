@@ -83,7 +83,7 @@ class Form extends React.Component {
 
         const params = this.state;
         params[name] = value;
-        this.props.history.push(`?${stringify(params)}`);
+        // this.props.history.push(`?${stringify(params)}`);
 
         const filters_info = buildFiltersInfo(this.state, value, name+"_id");
 
@@ -103,24 +103,31 @@ class Form extends React.Component {
 
     render() {
         const selects = _.map(this.props.config.filter_fields, (field) => {
+            const selectId = `${field.name}-filter`
             return (
-                <div className="form__row" key={field.name}>
-                    <label htmlFor={field.name}>{field.label}</label>
-                    <Select 
+              <div className='toolkit-filter' key={selectId}>
+                <div className='toolkit-filter-group' key={field.name}>
+                    <label htmlFor={selectId}>{field.label}</label>
+                    <Select
+                        id={selectId}
                         name={field.name}
                         options={ buildSelectOptions(this.props.filters[field.name]) } 
                         onChange={(event, name) => this.handleSelectChange(event, field.name)}
                         value={this.state[field.name]}
+                        clearable={false}
                     />
                 </div>
+              </div>
             );
         });
 
         return (
             <form>
+                <div className="toolkit-filters">
                 {selects}
+                </div>
 
-                <button type="reset" value="Clear" className="form__clear-button" onClick={this.clearForm}>Clear</button>
+                <button type="reset" value="Clear" className="toolkit-form-clear-button" onClick={this.clearForm}>Clear</button>
             </form>
         );
     }

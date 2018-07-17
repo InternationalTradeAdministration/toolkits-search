@@ -1,25 +1,20 @@
-import React, { Component } from "react";
-import _ from "lodash";
+import React from 'react'
 
-import FilterPanel from "../filter_panel";
-import Providers from "../providers";
+import FilterPanel from '../filter_panel'
+import Providers from '../providers'
 
 const EnvironmentalSolutionsRu = ({results}) => {
-    return(
-        <table>
-            <tbody>
-                <tr>
-                    <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="Solution" heading="Provider"/>
-                    </td>
-                    <td className="results__additional-column">
-                        <FilterPanel results={results['Environmental Issue']} heading="Environmental Issue" />
-                        <FilterPanel results={results['EPA Regulation']} heading="EPA Regulation" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    );
-};
+  return (
+    <div className='toolkit-results'>
+      <div className='toolkit-result-group'>
+        <Providers providers={results.provider} low_level='Solution' heading='Provider' />
+      </div>
+      <div className='toolkit-result-group'>
+        <FilterPanel results={results['environmental issue']} heading='Environmental Issues' />
+        <FilterPanel results={results['epa regulation']} heading='EPA Regulations' renderItemTitle={false} />
+      </div>
+    </div>
+  )
+}
 
-export default EnvironmentalSolutionsRu;
+export default EnvironmentalSolutionsRu
