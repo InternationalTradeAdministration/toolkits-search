@@ -8,7 +8,7 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import createHistory from "history/createHashHistory";
 
-import "../css/style.scss";
+import "../scss/index.scss";
 
 function renderToElement(elementId, toolkit_name) {
     const store = createStore(reducer, applyMiddleware(thunk, logger));
