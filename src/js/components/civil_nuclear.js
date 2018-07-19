@@ -1,21 +1,15 @@
-import React, { Component } from "react";
-import _ from "lodash";
+import React from 'react'
 
-import FilterPanel from "./filter_panel";
-import Providers from "./providers";
+import Providers from './providers'
 
 const CivilNuclear = ({results}) => {
-    return(
-        <table>
-            <tbody>
-                <tr>
-                    <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="Solution" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    );
-};
+  return (
+    <div className='toolkit-results toolkit-results-only-providers'>
+      <div className='toolkit-result-group'>
+        <Providers providers={results.provider} low_level='Solution' heading='U.S. Solution Provider' />
+      </div>
+    </div>
+  )
+}
 
-export default CivilNuclear;
+export default CivilNuclear

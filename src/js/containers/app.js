@@ -52,38 +52,45 @@ class App extends Component {
         let query = parse(this.props.history.location.search);
         let language_form = null;
         if(config[this.props.toolkit_name].languages_enabled){
-            language_form = (<form className='language-select'>
-                    <label htmlFor="language">Select a Language</label>
+            language_form = (
+              <form className='language-select'>
+                  <div className='toolkit-filters'>
+                      <div className='toolkit-filter'>
+                          <div className='toolkit-filter-group'>
+                    <label htmlFor="language">Search the toolkit in</label>
                     <Select 
-                        name="language"
+                        id="language"
                         options={language_options} 
                         onChange={this.handleSelectChange}
                         value={this.state.language_val}
+                        clearable={false}
                     />
-                    <br />
+                          </div>
+                      </div>
+                  </div>
                 </form>);
         }
         return (
-            <div>
-              	<div className="form">
-        	      	<h1>{config[this.state.toolkit_name].heading}</h1>
-        	      	<p>{config[this.state.toolkit_name].description}</p>
-                    {language_form}
-        	        <Form 
-        	        	filters={this.props.filters} 
-        	        	dispatch={this.props.dispatch}
-        	        	history={this.props.history} 
-        	        	initial_values={query}
-        	        	config={config[this.state.toolkit_name]}
-        	        	toolkit_name={this.state.toolkit_name}
-        	        />
-                        </div>
-                        <Result results={this.props.results} toolkit_name={this.state.toolkit_name} />
-                        <div className="disclaimer">
-                	<h4>Disclaimer</h4>
-                	<p>{config[this.state.toolkit_name].disclaimer}</p>
-                </div>
+          <div className='toolkit-container'>
+            <div className='toolkit-form'>
+              <h1>{config[this.state.toolkit_name].heading}</h1>
+              <p className='toolkit-description'>{config[this.state.toolkit_name].description}</p>
+              {language_form}
+              <Form
+                filters={this.props.filters}
+                dispatch={this.props.dispatch}
+                history={this.props.history}
+                initial_values={query}
+                config={config[this.state.toolkit_name]}
+                toolkit_name={this.state.toolkit_name}
+              />
             </div>
+            <Result results={this.props.results} toolkit_name={this.state.toolkit_name}/>
+            <div className='toolkit-disclaimer'>
+              <div>Disclaimer</div>
+              <p>{config[this.state.toolkit_name].disclaimer}</p>
+            </div>
+          </div>
         );
     }
 }

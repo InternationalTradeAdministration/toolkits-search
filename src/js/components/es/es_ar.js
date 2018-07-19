@@ -1,25 +1,21 @@
-import React, { Component } from "react";
-import _ from "lodash";
+import React from 'react'
 
-import FilterPanel from "../filter_panel";
-import Providers from "../providers";
+import FilterPanel from '../filter_panel'
+import Providers from '../providers'
 
-const EnvironmentalSolutionsAr = ({results}) => {
-    return(
-        <table>
-            <tbody>
-                <tr>
-                    <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="حل" heading="موفر الحلول الأمريكي"/>
-                    </td>
-                    <td className="results__additional-column">
-                        <FilterPanel results={results['قضية بيئية']} heading="قضية بيئية" />
-                        <FilterPanel results={results['لائحة وكالة حماية البيئة']} heading="لائحة وكالة حماية البيئة" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    );
-};
+const EnvironmentalSolutionsAr = ({ results }) => {
+  return (
+    <div className='toolkit-results'>
+      <div className='toolkit-result-group'>
+        <Providers providers={results.provider} low_level='حل' heading='موفر الحلول الأمريكي' />
+      </div>
+      <div className='toolkit-result-group'>
+        <FilterPanel results={results['قضية بيئية']} heading='قضية بيئية' />
+        <FilterPanel results={results['لائحة وكالة حماية البيئة']} heading='لائحة وكالة حماية البيئة'
+          renderItemTitle={false} />
+      </div>
+    </div>
+  )
+}
 
-export default EnvironmentalSolutionsAr;
+export default EnvironmentalSolutionsAr

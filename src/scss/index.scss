@@ -1,0 +1,157 @@
+#toolkit-search {
+  @import 'custom_bootstrap';
+  @import 'custom_react_select';
+
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  text-align: left; // 3
+  //background-color: $body-bg; // 2
+  padding: 3em;
+
+  .toolkit-container {
+    @extend .container-fluid;
+
+    h1 {
+      font-weight: 900;
+      line-height: 1;
+
+      @include media-breakpoint-up(xl) {
+        font-size: 3.15rem;
+      }
+    }
+  }
+
+  .toolkit-description {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+
+  .toolkit-form {
+    margin-bottom: 1rem;
+  }
+
+  .toolkit-filters {
+    @extend .row;
+  }
+
+  .toolkit-filter {
+    @extend .col-xl-6;
+  }
+
+  .toolkit-filter-group {
+    @extend .form-group;
+
+    label {
+      font-weight: 700;
+    }
+
+    .Select-control {
+      height: 3rem;
+
+      @include media-breakpoint-up(xl) {
+        height: 4rem;
+      }
+    }
+
+    .Select-placeholder, .Select-value, .Select-input {
+      padding: 0.25rem;
+
+      @include media-breakpoint-up(xl) {
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  .toolkit-form-clear-button {
+    @extend .btn;
+    @extend .btn-secondary;
+  }
+
+  .toolkit-results {
+    @extend .row;
+    margin-bottom: 1rem;
+
+    .toolkit-result-group {
+      @extend .col-xl-6;
+    }
+
+    &-only-providers {
+      .toolkit-result-group {
+        @extend .col-xl-12;
+      }
+    }
+  }
+
+  .toolkit-result {
+    margin-bottom: 2rem;
+
+    h2 {
+      @extend .font-weight-bold;
+    }
+  }
+
+  .toolkit-result-item {
+    @extend .card;
+    margin-bottom: 1rem;
+
+    &-non-provider {
+      border: 0;
+      margin-bottom: 0;
+      font-size: 1.2rem;
+
+      .toolkit-result-item-body {
+        padding-right: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+
+        h3 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .toolkit-result-item-body {
+    @extend .card-body;
+
+    h3 {
+      @extend .card-title;
+      @extend .font-weight-bold;
+    }
+
+    h4 {
+      @extend .card-subtitle;
+      @extend .font-weight-bold;
+      @extend .text-black-50;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .toolkit-result-item-text {
+    @extend .card-text;
+  }
+
+  .toolkit-result-item-links {
+    @extend .list-unstyled;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .toolkit-disclaimer {
+    background-color: #f3f3f3;
+    color: #3c4542;
+    padding: 1em;
+
+    div {
+      margin-bottom: 1rem;
+      text-decoration: underline;
+    }
+  }
+}
+

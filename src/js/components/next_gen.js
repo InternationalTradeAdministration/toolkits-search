@@ -1,24 +1,19 @@
-import React, { Component } from "react";
-import _ from "lodash";
+import React from 'react'
 
-import FilterPanel from "./filter_panel";
-import Providers from "./providers";
+import FilterPanel from './filter_panel'
+import Providers from './providers'
 
 const NextGen = ({results}) => {
-    return(
-        <table>
-            <tbody>
-                <tr>
-                    <td className="results__providers-column">
-                        <Providers providers={results.provider} low_level="Solution" />
-                    </td>
-                    <td className="results__additional-column">
-                        <FilterPanel results={results['performance improvement area']} heading="Performance Improvement Area" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    );
-};
+  return (
+    <div className='toolkit-results'>
+      <div className='toolkit-result-group'>
+        <Providers providers={results.provider} low_level='Solution' heading='U.S. Solution Provider' />
+      </div>
+      <div className='toolkit-result-group'>
+        <FilterPanel results={results['performance improvement area']} heading='Performance Improvement Area' />
+      </div>
+    </div>
+  )
+}
 
-export default NextGen;
+export default NextGen

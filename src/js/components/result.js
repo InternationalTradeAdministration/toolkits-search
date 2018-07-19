@@ -60,11 +60,7 @@ const Result = ({results, toolkit_name}) => {
         results_panel = null;
     }
 
-    return (
-        <div className="results">
-            {results_panel}
-        </div>
-    );
+    return results_panel;
 };
 
 export default Result;
