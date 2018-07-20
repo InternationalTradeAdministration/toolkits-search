@@ -7,8 +7,7 @@
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  text-align: left; // 3
-  //background-color: $body-bg; // 2
+  text-align: left;
   padding: 3em;
 
   .toolkit-container {
@@ -19,18 +18,18 @@
       line-height: 1;
 
       @include media-breakpoint-up(xl) {
-        font-size: 3.15rem;
+        font-size: ($host-to-base-font-ratio * 3.15rem);
       }
     }
   }
 
   .toolkit-description {
-    font-size: 1.25rem;
+    font-size: ($host-to-base-font-ratio * 1.25rem);
     font-weight: 300;
   }
 
   .toolkit-form {
-    margin-bottom: 1rem;
+    margin-bottom: ($host-to-base-font-ratio * 2rem);
   }
 
   .toolkit-filters {
@@ -45,22 +44,24 @@
     @extend .form-group;
 
     label {
+      color: inherit;
+      font-size: inherit;
       font-weight: 700;
     }
 
     .Select-control {
-      height: 3rem;
+      height: ($host-to-base-font-ratio * 4rem);
 
       @include media-breakpoint-up(xl) {
-        height: 4rem;
+        height: ($host-to-base-font-ratio * 3rem);
       }
     }
 
     .Select-placeholder, .Select-value, .Select-input {
-      padding: 0.25rem;
+      padding: ($host-to-base-font-ratio * 0.5rem);
 
       @include media-breakpoint-up(xl) {
-        padding: 0.5rem;
+        padding: ($host-to-base-font-ratio * 0.25rem);
       }
     }
   }
@@ -72,7 +73,7 @@
 
   .toolkit-results {
     @extend .row;
-    margin-bottom: 1rem;
+    margin-bottom: ($host-to-base-font-ratio * 1rem);
 
     .toolkit-result-group {
       @extend .col-xl-6;
@@ -86,7 +87,7 @@
   }
 
   .toolkit-result {
-    margin-bottom: 2rem;
+    margin-bottom: ($host-to-base-font-ratio * 2rem);
 
     h2 {
       @extend .font-weight-bold;
@@ -95,12 +96,47 @@
 
   .toolkit-result-item {
     @extend .card;
-    margin-bottom: 1rem;
+    margin-bottom: ($host-to-base-font-ratio * 1rem);
+
+    &-body {
+      @extend .card-body;
+
+      h3 {
+        @extend .card-title;
+        @extend .font-weight-bold;
+        display: block;
+      }
+
+      h4 {
+        @extend .card-subtitle;
+        @extend .font-weight-bold;
+        @extend .text-black-50;
+        display: block;
+        font-size: ($host-to-base-font-ratio * 1rem);
+        margin-bottom: ($host-to-base-font-ratio * 0.5rem);
+      }
+    }
+
+    &-text {
+      @extend .card-text;
+    }
+
+    &-links {
+      @extend .list-unstyled;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    &-solutions {
+      list-style: disc;
+    }
 
     &-non-provider {
       border: 0;
       margin-bottom: 0;
-      font-size: 1.2rem;
+      font-size: ($host-to-base-font-ratio * 1.2rem);
 
       .toolkit-result-item-body {
         padding-right: 0;
@@ -108,48 +144,19 @@
         padding-left: 0;
 
         h3 {
-          font-size: 1.2rem;
+          font-size: ($host-to-base-font-ratio * 1.2rem);
         }
       }
-    }
-  }
-
-  .toolkit-result-item-body {
-    @extend .card-body;
-
-    h3 {
-      @extend .card-title;
-      @extend .font-weight-bold;
-    }
-
-    h4 {
-      @extend .card-subtitle;
-      @extend .font-weight-bold;
-      @extend .text-black-50;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  .toolkit-result-item-text {
-    @extend .card-text;
-  }
-
-  .toolkit-result-item-links {
-    @extend .list-unstyled;
-
-    a {
-      text-decoration: underline;
     }
   }
 
   .toolkit-disclaimer {
     background-color: #f3f3f3;
     color: #3c4542;
-    padding: 1em;
+    padding: ($host-to-base-font-ratio * 1rem);
 
     div {
-      margin-bottom: 1rem;
+      margin-bottom: ($host-to-base-font-ratio * 1rem);
       text-decoration: underline;
     }
   }
