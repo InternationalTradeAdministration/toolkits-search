@@ -3,7 +3,6 @@ import Select from "react-select";
 
 import _ from "lodash";
 import { getFiltersQuery, getFilters } from "../actions/filters";
-import { stringify } from "querystring";
 
 const buildSelectOptions = (options) => {
     return _.map(options, (option) => { return {label: option, value: option};});

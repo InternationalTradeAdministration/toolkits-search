@@ -41,7 +41,7 @@ exports.loadSCSS = () => (
 
 exports.extractSCSS = () => {
   const plugin = new MiniCssExtractPlugin({
-    filename: '[name].css'
+    filename: 'bundle.css'
   })
   return {
     module: {

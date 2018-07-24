@@ -19,25 +19,31 @@ const sites = [
   'smart_grid'
 ]
 
+const entries = {}
+
+sites.forEach((site) => {
+  entries[site] = [
+    'babel-polyfill',
+    'whatwg-fetch',
+    path.resolve(__dirname, `src/js/entries/${site}.js`)
+  ]
+})
+
 const pages = sites.map((site) => {
   return new HtmlWebpackPlugin({
     template: './src/html/index.html',
     filename: `${site}.html`,
     toolkit_name: site,
-    title: `${startCase(site)} Toolkit Search`
+    title: `${startCase(site)} Toolkit Search`,
+    chunks: [site]
   })
 })
 
 const commonConfig = {
-  entry: {
-    bundle: [
-      'whatwg-fetch',
-      path.resolve(__dirname, 'src/js/index.js')
-    ]
-  },
+  entry: entries,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getFilters } from "../actions/filters";
 import Form from "../components/form";
 import Result from "../components/result";
-import { parse } from "query-string";
+import { parse } from "querystring";
 import config from "../config";
 import Select from "react-select";
 import { stringify } from "querystring";
