@@ -150,13 +150,12 @@
     }
   }
 
-  .toolkit-disclaimer {
+  .toolkit-definition, .toolkit-disclaimer {
     background-color: #f3f3f3;
     color: #3c4542;
     padding: ($host-to-base-font-ratio * 1rem);
 
     div {
-      margin-bottom: ($host-to-base-font-ratio * 1rem);
       text-decoration: underline;
     }
   }

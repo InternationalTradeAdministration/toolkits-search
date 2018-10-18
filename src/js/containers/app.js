@@ -51,6 +51,8 @@ class App extends Component {
     render() {
         let query = parse(this.props.history.location.search);
         let language_form = null;
+      let htmlDefinition = config[this.props.toolkit_name].html_definition
+      let htmlDefinitionElement = (htmlDefinition) ? (<div className='toolkit-definition' dangerouslySetInnerHTML={{ __html: htmlDefinition }}/>) : null
         if(config[this.props.toolkit_name].languages_enabled){
             language_form = (
               <form className='language-select'>
@@ -58,9 +60,9 @@ class App extends Component {
                       <div className='toolkit-filter'>
                           <div className='toolkit-filter-group'>
                     <label htmlFor="language">Search the toolkit in</label>
-                    <Select 
+                    <Select
                         id="language"
-                        options={language_options} 
+                        options={language_options}
                         onChange={this.handleSelectChange}
                         value={this.state.language_val}
                         clearable={false}
@@ -86,6 +88,7 @@ class App extends Component {
               />
             </div>
             <Result results={this.props.results} toolkit_name={this.state.toolkit_name}/>
+            {htmlDefinitionElement}
             <div className='toolkit-disclaimer'>
               <div>Disclaimer</div>
               <p>{config[this.state.toolkit_name].disclaimer}</p>
